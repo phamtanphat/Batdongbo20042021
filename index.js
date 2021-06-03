@@ -67,15 +67,25 @@ function tru(a, b) {
 
 // async await
 
-async function xuly (a , b ){
-    try {
-        let tong = await console.log;
-        let hieu = await tru(tong, 5);
-        console.log(hieu);
-    } catch (error) {
-        console.log(error);
-    }
-    
+// async function xuly (a , b ){
+//     try {
+//         let tong = await cong(a, b);
+//         let hieu = await tru(tong, 5);
+//         console.log(hieu);
+//     } catch (error) {
+//         console.log(error);
+//     }  
+// }
+
+// xuly(3 , 2);
+
+function delay(){
+    return new Promise((resolve,reject) => {
+        setTimeout(() => {
+            resolve("Finish");
+        }, 2000)
+    })
 }
 
-xuly('a' , 2);
+delay()
+.then(data => console.log(data)) 
