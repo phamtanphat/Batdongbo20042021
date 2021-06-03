@@ -28,28 +28,32 @@ function cong(a, b) {
     return new Promise((resolve , reject) => {
         const URL = `https://pheptinhonline.herokuapp.com/cong/${a}/${b}`;
         request(URL, { json: true }, function (error, response, body) {
-            if (error) return reject(error);
-            if (!body.success) return reject(body.message)
+            if (error) return reject(new Error("Lỗi của công"));
+            if (!body.success) return reject(new Error("Lỗi của công"))
             return resolve(body.message);
         });
     })
 }
 
-
-cong(3,2)
-.then(tong => console.log(tong))
-.catch(error => console.log(error))
-
-function tru(a, b, cb){
-    const URL = `https://pheptinhonline.herokuapp.com/tru/${a}/${b}`;
-    request(URL, { json: true }, function (error, response, body) {
-        if (error) return cb(error);
-        if (!body.success) return cb(body.message)
-        return cb(null, body.message);
-    });
+function tru(a, b) {
+    return new Promise((resolve, reject) => {
+        const URL = `https://pheptinhonline.herokuapp.com/tru/${a}/${b}`;
+        request(URL, { json: true }, function (error, response, body) {
+            if (error) return reject(new Error("Lỗi của trừ"));
+            if (!body.success) return reject(new Error("Lỗi của trừ"))
+            return resolve(body.message);
+        });
+    })
 }
 
+// cong(3, 'a')
+// .then(tong => tru(tong, 'a'))
+// .then(hieu => console.log(hieu))
+// .catch(error => console.log(error))
+
+
 // 3 + 2 - 5
+
 
 // cong(3 , 2 , (error , tong) => {
 //     if (error) return console.log(error);
@@ -60,3 +64,18 @@ function tru(a, b, cb){
 // })
 
 // promise
+
+// async await
+
+async function xuly (a , b ){
+    try {
+        let tong = await console.log;
+        let hieu = await tru(tong, 5);
+        console.log(hieu);
+    } catch (error) {
+        console.log(error);
+    }
+    
+}
+
+xuly('a' , 2);
